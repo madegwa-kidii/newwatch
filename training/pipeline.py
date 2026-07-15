@@ -37,7 +37,12 @@ class TrainingPipeline:
 
             image_count = 0
 
-            for image_path in sorted(person_dir.glob("*.jpg")):
+            image_files = []
+
+            for ext in ("*.jpg", "*.jpeg", "*.png", "*.JPG", "*.JPEG", "*.PNG"):
+                image_files.extend(person_dir.glob(ext))
+
+            for image_path in sorted(image_files):
 
                 print(f"  Processing {image_path.name}...")
 
